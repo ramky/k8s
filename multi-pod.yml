@@ -1,0 +1,26 @@
+kind: Pod ## kubectl api-resources
+apiVersion: v1
+metadata:
+  name: multi-pod1
+  labels: ## assinging labels to pod is mandatory / must
+    team: pggroup ## here both key & value are your choice
+  namespace: projecta
+spec:
+  containers:
+    - name: cont1
+      image: nginx ## by default pulls from docker hub ## registry.com/acct/repo:tag
+      ports:
+        - name: http
+          containerPort: 80 ## process port within container
+        - name: https
+          containerPort: 443
+    - name: cont2
+      image: tomcat ## by default pulls from docker hub ## registry.com/acct/repo:tag
+      ports:
+        - name: http
+          containerPort: 8080 ## process port within container
+        - name: https
+          containerPort: 8443
+    - name: cont3
+      image: alpine ## by default pulls from docker hub ## registry.com/acct/repo:tag
+      command: ["sh", "-c", "sleep 3600"]
