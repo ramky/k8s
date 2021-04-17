@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc1
+  namespace: default
+spec:
+  type: ClusterIP  ## is a Virtual Load balancer that can forward the request into multiple backend pods
+  selector:
+    team: cka   ## here the service gets all pods & thier ips
+  ports:
+    - port: 80   ## is your Virtual LB port
+      targetPort: 3000  ## is the process port inside container

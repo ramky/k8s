@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-pod
+  labels:
+    name: loginms
+spec:
+  initContainers:
+    - name: init-myservice
+      image: busybox
+      command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+  containers:
+    - name: cont1
+      image: learndevops/nginix:app1
+      resources:
+      ports:
+        - name: http
+          containerPort: 80

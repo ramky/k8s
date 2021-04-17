@@ -1,0 +1,22 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: rs1
+  namespace: default
+spec:
+  replicas: 2  ## if we do not mention it default to 1 replica
+  selector:    ### selector is mandatory for every controller
+    matchLabels:
+      team: cka
+  template:   ## pod template which describe the pod definition / metadata/spec of the pod
+    metadata:  # pod metadata
+      name: app ## need not to define the pod name here / kubernetes will create a name for pod automatically
+      labels:
+        team: cka
+    spec:
+      containers:
+        - name: contx
+          image: lerndevops/samplepyapp:v1
+          ports:
+            - name: http
+              containerPort: 3000

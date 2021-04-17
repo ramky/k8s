@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: static-pod
+  labels:
+    type: static
+spec:
+  containers:
+    - name: cont1
+      image: nginx
+      resources:
+      ports:
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443

@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: np-svc
+  namespace: default
+spec:
+  type: LoadBalancer  ## is going publish a nodeport/hostport on every node in the cluster ans also create
+                      ## a Virtual Load balancer that can forward the request into multiple backend pods
+  selector:
+    team: cka   ## here the service gets all pods & thier ips
+  ports:
+    - port: 80   ## is your Virtual LB port
+      targetPort: 3000  ## is the process port inside container
