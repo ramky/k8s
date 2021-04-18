@@ -1,0 +1,17 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: payrollprocessjob
+  namespace: default
+spec:
+  backoffLimit: 4
+  template:
+    metadata:
+      labels:
+        role: payroll
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: paryroll
+          image: centos:7
+          command: ["sh", "-c", "echo payrool process completed !!"]

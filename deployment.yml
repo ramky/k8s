@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dep1
+spec:
+  replicas: 10
+  minReadySeconds: 45
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: conty
+        image: leaddevops/kubeserve:v1
+        resources:
+        ports:
+        - name: http
+          containerPort: 80
