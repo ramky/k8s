@@ -1,0 +1,21 @@
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: ds1
+  namespace: default
+spec:
+  # no replicas
+  selector:
+    matchLabels:
+      role: dsapp
+  template:
+    metadata:
+      labels:
+        role: dsapp
+    spec:
+     containers:
+       - name: contx
+         image: nginx
+         ports:
+          - name: http
+            containerPort: 80
