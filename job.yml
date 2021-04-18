@@ -12,6 +12,6 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-        - name: paryroll
+        - name: payroll
           image: centos:7
-          command: ["sh", "-c", "echo payrool process completed !!"]
+          command: ["sh", "-c", "echo payroll process completed !!"]
