@@ -1,0 +1,22 @@
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: paryrool-cj
+  namespace: default
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            role: payrolll
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: hello
+              image: alpine
+              args:
+                - /bin/sh
+                - -c
+                - echo payroll completed at; date
