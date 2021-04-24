@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dep1
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      tolerations:
+        - key: covidblock
+          operator: "Equal"
+          value: yess
+          effect: NoSchedule
+        - key: infected
+          operator: "Exists"
+          effect: NoExecute
+      containers:
+      - name: conty
+        image: leaddevops/sampleapp:13
+        resources:
+        ports:
+        - name: http
+          containerPort: 80

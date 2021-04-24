@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dep1
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      nodeSelector:
+        type: db
+      containers:
+      - name: conty
+        image: leaddevops/sampleapp:13
+        resources:
+        ports:
+        - name: http
+          containerPort: 80

@@ -8,6 +8,16 @@ spec:
   containers:
     - name: cont1
       image: nginx
+      resources:
+        limits:
+          memory: 256M
+          cpu: "0.2"
+        requests:
+          memory: 128M
+          cpu: "0.1" # 10% of 1 core
+      env:
+        - name: mydb
+          value: "10.45.1.11"
       ports:
         - name: http
           containerPort: 80
