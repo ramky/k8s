@@ -1,0 +1,74 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: rp-dep1
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      role: app
+  template:
+    metadata:
+      labels:
+        role: app
+    spec:
+      terminationGracePeriodSeconds: 0
+      restartPolicy: Always
+      #nodeName: wnode1
+      #nodeSelector:  ## schecular will use the lables of the nodes to select the set of nodes & deploy
+      #  type: db
+      tolerations:
+       - key: covidblock
+         operator: "Equal"  ## Exists
+         value: yess
+         effect: NoSchedule
+       - key: infected
+         operator: Exists
+         effect: NoExecute
+      initContainers:
+        - name: init1
+          image: alpine
+          command: ["sh", "-c", "sleep 5"]
+      containers:
+        - name: cont1
+          image: lerndevops/samplepyapp:v1
+          ports:
+            - name: http
+              containerPort: 3000
+          readinessProbe:  ## when a readiness probe fails it will mark the pod status as not ready
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            httpGet:
+              path: /
+              port: 3000
+            #tcpSocket:
+            #  port: 80
+            #exec:
+            #  command: ["sh", "-c", "sleep 30"]
+          livenessProbe:  ## whenever liveness probe fails kubelet will restart the container
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            httpGet:
+              path: /
+              port: 3000
+            #tcpSocket:
+            #  port: 80
+            #exec:
+            #  command: ["curl", "localhost:3000", "/"]
+          resources:
+            requests:  ## minimum memory/cpu allocated to a container
+              memory: 128M
+              cpu: "0.1"  ## 10% of 1 core cpu on the vm / node
+            limits:    ## maximum memory/cpu can be used by cont from a node/vm
+              memory: 256M
+              cpu: "0.2"
+          env:
+            - name: mydb
+              value: "10.45.34.23"
+            - name: mydbport
+              value: "1521"
+            - name: MY_HOME
+              value: /home/naresh
