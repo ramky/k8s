@@ -1,4 +1,4 @@
-Version: v1
+version: v1
 kind: Pod
 metadata:
   name: voting-app-pod
