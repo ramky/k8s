@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: voting-app
-    image: docsamples/examplevotingapp_vote
+    image: dockersamples/examplevotingapp_vote
     resources:
       limits:
         memory: "128Mi"

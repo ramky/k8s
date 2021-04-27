@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: result-app
-    image: docsamples/examplevotingapp_result
+    image: dockersamples/examplevotingapp_result
     resources:
       limits:
         memory: "128Mi"
