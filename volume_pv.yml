@@ -1,0 +1,12 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv1
+spec:
+  hostPath:
+    path: /config  ## this will the vm path wherever the pod runs
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce ## only one node can wirte / read the data from the vol -- ReadWriteMany / ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain  ## Delete

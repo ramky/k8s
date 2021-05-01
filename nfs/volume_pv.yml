@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: nfs-pv
+spec:
+  #hostPath:
+  #  path: /config  ## this will the vm path wherever the pod runs
+  nfs:
+    path: /mnt/slearndata
+    server: 10.128.0.32
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany ## only one node can wirte / read the data from the vol -- ReadWriteMany / ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain  ## Delete
