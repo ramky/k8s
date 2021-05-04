@@ -22,20 +22,4 @@ spec:
       volumeMounts:
       - name: html
         mountPath: /html
-      command: ["/bin/sh", "-c"]
-      args:
-        - while true; do
-            cat > index.html << EOF
-              <!DOCTYPE html>
-              <html>
-                <head lang="en">
-                  <title></title>
-                  <meta charset="UTF-8" />
-                </head>
-                <body>
-                  <p>Datetime is `date`</p>
-                </body>
-              </html>
-            EOF
-          sleep 1;
-          done
+      command: ["/bin/sh", "-c", "while true; do echo \"<!DOCTYPE html><html><head><title>Index page</title></head><body><p>Datetime is `date`</p></body></html>\" > index.html; sleep 1; done"]
