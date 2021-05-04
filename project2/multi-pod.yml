@@ -25,17 +25,17 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - while true; do
-          cat > index.html << EOF
-            <!DOCTYPE html>
-            <html>
-              <head lang="en">
-                <title></title>
-                <meta charset="UTF-8" />
-              </head>
-              <body>
-                <p>Datetime is `date`</p>
-              </body>
-            </html>
-          EOF
+            cat > index.html << EOF
+              <!DOCTYPE html>
+              <html>
+                <head lang="en">
+                  <title></title>
+                  <meta charset="UTF-8" />
+                </head>
+                <body>
+                  <p>Datetime is `date`</p>
+                </body>
+              </html>
+            EOF
           sleep 1;
           done
