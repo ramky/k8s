@@ -1,0 +1,26 @@
+kind: Pod ## kubectl api-resources
+apiVersion: v1
+metadata:
+  name: project2-multi-pod
+  labels:
+    project: p2
+spec:
+  containers:
+    - name: cont1
+      image: nginx ## by default pulls from docker hub ## registry.com/acct/repo:tag
+      ports:
+        - name: http
+          containerPort: 80
+      resources:
+        limits:
+          memory: "1Gi"
+          cpu: "800m"
+    - name: cont2
+      image: tomcat
+      ports:
+        - name: http
+          containerPort: 8080
+      resources:
+        limits:
+          memory: "1Gi"
+          cpu: "800m"
