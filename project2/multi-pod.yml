@@ -22,4 +22,4 @@ spec:
       volumeMounts:
       - name: html
         mountPath: /html
-      command: ["/bin/sh", "-c", "while true; do echo \"<!DOCTYPE html><html><head><title>Index page</title></head><body><p>Datetime is `date`</p></body></html>\" > index.html; sleep 1; done"]
+      command: ["/bin/sh", "-c", "while true; do echo \"<!DOCTYPE html><html><head><title>Index page</title></head><body><p>Datetime is `date`</p></body></html>\" > html/index.html; sleep 1; done"]
