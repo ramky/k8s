@@ -14,7 +14,7 @@ spec:
       resources:
         limits:
           memory: "1Gi"
-          cpu: "800m"
+          cpu: "1"
     - name: cont2
       image: tomcat
       ports:
@@ -23,4 +23,4 @@ spec:
       resources:
         limits:
           memory: "1Gi"
-          cpu: "800m"
+          cpu: "1"
