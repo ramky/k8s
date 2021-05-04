@@ -5,6 +5,9 @@ metadata:
   labels:
     project: p2
 spec:
+  volumes:
+    - name: html
+      emptyDir: {}
   containers:
     - name: cont1
       image: nginx
