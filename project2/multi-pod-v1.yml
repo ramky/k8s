@@ -1,0 +1,15 @@
+kind: Pod ## kubectl api-resources
+apiVersion: v1
+metadata:
+  name: project2-multi-pod
+  labels:
+    project: p2
+spec:
+  containers:
+    - name: cont1
+      image: nginx
+      ports:
+        - name: http
+          containerPort: 80
+    - name: cont2
+      image: debian
