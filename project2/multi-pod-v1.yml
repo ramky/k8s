@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: project2-multi-pod
+  labels:
+    project: p2
+spec:
+  containers:
+    - name: cont1
+      image: nginx
+      ports:
+        - name: http
+          containerPort: 80
+    - name: cont2
+      image: debian
+      command: ["/bin/sh", "-c", "sleep 3600"]

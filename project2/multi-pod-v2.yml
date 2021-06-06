@@ -1,4 +1,4 @@
-kind: Pod ## kubectl api-resources
+kind: Pod
 apiVersion: v1
 metadata:
   name: project2-multi-pod
